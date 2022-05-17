@@ -1,10 +1,12 @@
 package com.example.viewpagerdemo
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_rotate.*
 
 /**
  * A simple [Fragment] subclass.
@@ -17,5 +19,12 @@ class RotateFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rotate, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        imageViewRotate.setOnClickListener {
+            ObjectAnimator.ofFloat(it, "rotation", it.rotation + 30f).start()
+        }
     }
 }
